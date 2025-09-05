@@ -28,7 +28,12 @@ TimeToFirstFlatus_input = st.text_input('Time to first flatus after surgery (h)'
 TimeToFirstDefaecation_input = st.text_input('Time to first defaecation after surgery (h)','80')
 PostoperativeInfection_input = st.selectbox('Postoperative infection',('No', 'Yes'))
 
-
+PreoperativeHypoalbuminemia_input = st.selectbox('Preoperative hypoalbuminemia',('No', 'Yes'))
+PreoperativeInsufficientSleep_input = st.selectbox('Preoperative insufficient sleep',('No', 'Yes'))
+TypeOfSurgery_input = st.selectbox('Type of surgery',('Gastrectomy or small intestinal resection', 'Colon resection', 'Rectum resection'))
+Intraoperativebloodloss_input = st.text_input('Intraoperative blood loss (ml)','50')
+Postoperativehypotension_input = st.selectbox('Postoperative hypotension',('No', 'Yes'))
+PostoperativeAcuteKidneyInjury_input = st.selectbox('Postoperative acute kidney injury',('No', 'Yes'))
 
 edu_1 = np.where(edu_input=='Middle school or lower',1,0)
 edu_2 = np.where(edu_input=='High school',1,0)
@@ -36,15 +41,23 @@ edu_3 = np.where(edu_input=='College or higher',1,0)
 Postoperative_albumin_infusion = np.where(Postoperative_albumin_infusion_input=='No',0,1)
 PostoperativeInfection = np.where(PostoperativeInfection_input=='No',0,1)
 
-
+PreoperativeHypoalbuminemia = np.where(PreoperativeHypoalbuminemia_input=='No',0,1)
+PreoperativeInsufficientSleep = np.where(PreoperativeInsufficientSleep_input=='No',0,1)
+TypeOfSurgery_1 = np.where(TypeOfSurgery_input=='Gastrectomy or small intestinal resection',1,0)
+TypeOfSurgery_2 = np.where(TypeOfSurgery_input=='Colon resection',1,0)
+TypeOfSurgery_3 = np.where(TypeOfSurgery_input=='Rectum resection',1,0)
+Postoperativehypotension = np.where(Postoperativehypotension_input=='No',0,1)
+PostoperativeAcuteKidneyInjury = np.where(PostoperativeAcuteKidneyInjury_input=='No',0,1)
 
 if st.button('Predict'):
-    DurationOfSurgery = (float(DurationOfSurgery_input)-197.96493506)/75.7581255
-    HighestPainScore = (float(HighestPainScore_input)-2.66623377)/1.25419922
-    TimeToFirstFlatus = (float(TimeToFirstFlatus_input)-51.5974026)/29.449565
-    TimeToFirstDefaecation = (float(TimeToFirstDefaecation_input)-76.66883117)/44.3180441
+    DurationOfSurgery = (float(DurationOfSurgery_input)-198.90149626)/73.22723845
+    Intraoperativebloodloss = (float(Intraoperativebloodloss_input)-101.66458853)/209.0399405
+    HighestPainScore = (float(HighestPainScore_input)-2.78553616)/1.28443212
+    TimeToFirstFlatus = (float(TimeToFirstFlatus_input)-54.19950125)/30.71666999
+    TimeToFirstDefaecation = (float(TimeToFirstDefaecation_input)-77.60473815)/43.31145832
+    
     print(type(DurationOfSurgery_input))
-    features = np.array([DurationOfSurgery,HighestPainScore,TimeToFirstFlatus,TimeToFirstDefaecation,edu_2,edu_3,Postoperative_albumin_infusion,PostoperativeInfection]).reshape(1,-1)
+    features = np.array([DurationOfSurgery,Intraoperativebloodloss,HighestPainScore,TimeToFirstFlatus,TimeToFirstDefaecation,edu_2,edu_3,Postoperativehypotension,Postoperative_albumin_infusion,PostoperativeInfection,PreoperativeHypoalbuminemia,PreoperativeInsufficientSleep,PostoperativeAcuteKidneyInjury,TypeOfSurgery_2,TypeOfSurgery_3]).reshape(1,-1)
     col1, col2 = st.columns(2)
     p = model.predict_proba(features)[:,1]*100
     col1.metric("Score", int(p), )
