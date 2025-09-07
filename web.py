@@ -21,19 +21,21 @@ st.write('Early identification of female patients at high risk for prolonged hos
 st.divider()
 
 edu_input = st.selectbox('Education level',('Middle school or lower', 'High school', 'College or higher'))
+PreoperativeHypoalbuminemia_input = st.selectbox('Preoperative hypoalbuminemia',('No', 'Yes'))
+PreoperativeInsufficientSleep_input = st.selectbox('Preoperative insufficient sleep',('No', 'Yes'))
+TypeOfSurgery_input = st.selectbox('Type of surgery',('Gastrectomy or small intestinal resection', 'Colon resection', 'Rectum resection'))
 DurationOfSurgery_input = st.text_input('Duration of surgery (min)','200')
+Intraoperativebloodloss_input = st.text_input('Intraoperative blood loss (ml)','50')
+Postoperativehypotension_input = st.selectbox('Postoperative hypotension',('No', 'Yes'))
 Postoperative_albumin_infusion_input = st.selectbox('Postoperative albumin infusion',('No', 'Yes'))
 HighestPainScore_input = st.text_input('Highest pain score (numeric rating scale) at mobility during 73-120 h after surgery','3')
 TimeToFirstFlatus_input = st.text_input('Time to first flatus after surgery (h)','50')
 TimeToFirstDefaecation_input = st.text_input('Time to first defaecation after surgery (h)','80')
 PostoperativeInfection_input = st.selectbox('Postoperative infection',('No', 'Yes'))
-
-PreoperativeHypoalbuminemia_input = st.selectbox('Preoperative hypoalbuminemia',('No', 'Yes'))
-PreoperativeInsufficientSleep_input = st.selectbox('Preoperative insufficient sleep',('No', 'Yes'))
-TypeOfSurgery_input = st.selectbox('Type of surgery',('Gastrectomy or small intestinal resection', 'Colon resection', 'Rectum resection'))
-Intraoperativebloodloss_input = st.text_input('Intraoperative blood loss (ml)','50')
-Postoperativehypotension_input = st.selectbox('Postoperative hypotension',('No', 'Yes'))
 PostoperativeAcuteKidneyInjury_input = st.selectbox('Postoperative acute kidney injury',('No', 'Yes'))
+
+
+
 
 edu_1 = np.where(edu_input=='Middle school or lower',1,0)
 edu_2 = np.where(edu_input=='High school',1,0)
