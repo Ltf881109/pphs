@@ -8,15 +8,15 @@ import xgboost as xgb
 with open('xgb.pkl', 'rb') as f:
     model = pickle.load(f)
 
-st.title('Postoperative prolonged hospital stay calculator for female patients undergoing gastrointestinal surgery')
-st.subheader('Estimates the risk of postoperative prolonged hospital stay following gastrointestinal surgery in female patients.')
+st.title('Postoperative prolonged hospital stay calculator for patients undergoing gastrointestinal surgery')
+st.subheader('Estimates the risk of postoperative prolonged hospital stay following gastrointestinal surgery in patients.')
 st.divider()
 st.header('Pearls/Pitfalls')
-st.write('This calculator is a data-driven risk stratification tool designed to estimate the likelihood of prolonged hospital stay after gastrointestinal surgery in female patients. It is based on the FDP-PONV randomized controlled trial which included 1101 female patients and integrates extreme gradient boosting algorithm to help identify high-risk individuals and optimize postoperative management.')
+st.write('This calculator is a data-driven risk stratification tool designed to estimate the likelihood of prolonged hospital stay after gastrointestinal surgery in patients. It is based on the FDP-PONV randomized controlled trial which included 1141 patients and integrates extreme gradient boosting algorithm to help identify high-risk individuals and optimize postoperative management.')
 st.header('When to use')
-st.write('Female patients undergoing gastrointestinal surgery, to estimate the risk of postoperative prolonged hospital stay.')
+st.write('Patients undergoing gastrointestinal surgery, to estimate the risk of postoperative prolonged hospital stay.')
 st.header('Why use')
-st.write('Early identification of female patients at high risk for prolonged hospitalization enables clinicians to anticipate and allocate postoperative care resources more effectively, guide patient and family discussions about recovery expectations, minimize unnecessary hospital days and associated costs, and support personalized interventions and discharge planning. By leveraging comprehensive perioperative data, this tool facilitates objective risk stratification to enhance clinical outcomes, optimize resource utilization, and improve overall patient satisfaction.')
+st.write('Early identification of patients at high risk for prolonged hospitalization enables clinicians to anticipate and allocate postoperative care resources more effectively, guide patient and family discussions about recovery expectations, minimize unnecessary hospital days and associated costs, and support personalized interventions and discharge planning. By leveraging comprehensive perioperative data, this tool facilitates objective risk stratification to enhance clinical outcomes, optimize resource utilization, and improve overall patient satisfaction.')
 #st.write('A patient with detailed admission information can be more objectively risk stratified for their prognosis, quantify their risk, and potentially lead to shorter hospital stays, fewer inappropriate interventions, and more appropriate interventions.')
 st.divider()
 
